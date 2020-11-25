@@ -4,7 +4,7 @@
 ## Introduction
 I wanted to practice using the Heroku platform as a service (PaaS) for automatic deployment of a machine learning web app. I was curious to learn if I could create and push such a project in a few hours. 
 
-Since Heroku also enables integration with GitHub, it also automatically builds and releases any updates to my git repo [1](https://devcenter.heroku.com/articles/github-integration). 
+Since Heroku also enables integration with GitHub, it also [automatically builds and releases](https://devcenter.heroku.com/articles/github-integration) any updates to my git repo [1]. 
 
 I wanted to ease the web app development and [Streamlit](https://www.streamlit.io/) made this possible [2]. It is an open source library that focuses on data science and ML web app development. 
 
@@ -20,7 +20,7 @@ The objective is to predict the hospital charges.
 The dataset can found online at [git](https://github.com/stedy/Machine-Learning-with-R-datasets)[4]. Many example solutions and analysis can be found at [kaggle](https://www.kaggle.com/mirichoi0218/insurance) [5]
 
 Data preview: 
-[data screenshot](./insurance_data.png)
+![data screenshot](./insurance_data.png)
 
 
 Note that data has categorical features in 3 cols: sex, smoker and region.
@@ -29,7 +29,7 @@ Using linear regresssion, the learning accuracy shoots up from 12% to 75% with t
 
 We then create a pipeline for automating the process for new data. I also experimented with different imputer strategies for missing data and added second degree polynimial features for both the numeric and categorical data. The shown values are obtained by performing a gridsearch over these values. 
 Pipeline preview: 
-[pipeline screenshot](./pipeline.png)
+![pipeline screenshot](./pipeline.png)
 
 I finally saved the model via joblib to be used for predictions via the webapp. 
 
@@ -41,10 +41,17 @@ I finally saved the model via joblib to be used for predictions via the webapp.
 
 ## Results
 The app is live at https://ds-example.herokuapp.com/
-It allows for online and batch processing:
-- Online: User 
+It allows for online and batch processing as designed by the pycaret post:
+- Online: User inputs each feature manually for predicting a single insurance cost
+![online screenshot](./online.png)
+- Batch: It allows the user to uplaod a csv file with the 6 features for predicting many instances at once.
+![batch screenshot](./batch.png)
 
 ## Discussion
+Experiemting with various feature engineering techniques and regression algorithms, I found that linear regression with one-hot encoding provided one of the highest accuracies, despite its simpler nature. 
+
+
+
 ## Summary
 
 #### on Heroku PaaS using SciKit and Streamlit
