@@ -8,12 +8,12 @@ Since Heroku also enables integration with GitHub, it also [automatically builds
 
 I wanted to ease the web app development and [Streamlit](https://www.streamlit.io/) made this possible [2]. It is an open source library that focuses on data science and ML web app development. 
 
-This whole project is inspired by the [the pycaret post](https://towardsdatascience.com/build-and-deploy-machine-learning-web-app-using-pycaret-and-streamlit-28883a569104) [3]. I kept their web app setup, but replaced pycaret with pre-precoessing using numpy and predictions using scikit. This allowed my free-tier Heroku pod to be significantly smaller and faster. 
+This whole project is inspired by the [the pycaret post](https://towardsdatascience.com/build-and-deploy-machine-learning-web-app-using-pycaret-and-streamlit-28883a569104) [3]. I kept their web app setup, but replaced pycaret with pre-preprocessing using numpy and predictions using scikit. This allowed my free-tier Heroku pod to be significantly smaller and faster. 
 
 
 ## Selection of Data
 
-The model processing and training is conducted using a Jupyter Notebook and is avaiable [here](https://github.com/memoatwit/dsexample/blob/master/Insurance%20-%20Model%20Training%20Notebook.ipynb).
+The model processing and training is conducted using a Jupyter Notebook and is available [here](https://github.com/memoatwit/dsexample/blob/master/Insurance%20-%20Model%20Training%20Notebook.ipynb).
 
 The data has over 1,300 samples with 6 features: age,sex,bmi,children,smoker,region.  
 The objective is to predict the hospital charges.
@@ -25,36 +25,45 @@ Data preview:
 
 Note that data has categorical features in 3 cols: sex, smoker and region.
 I used OneHotEncoder/ColumnTransformer on these and kept the rest of the features as is
-Using linear regresssion, the learning accuracy shoots up from 12% to 75% with this transformation. 
+Using linear regression, the learning accuracy shoots up from 12% to 75% with this transformation. 
 
-We then create a pipeline for automating the process for new data. I also experimented with different imputer strategies for missing data and added second degree polynimial features for both the numeric and categorical data. The shown values are obtained by performing a gridsearch over these values. 
+We then create a pipeline for automating the process for new data. I also experimented with different imputer strategies for missing data and added second degree polynomial features for both the numeric and categorical data. The shown values are obtained by performing a grid search over these values. 
 Pipeline preview: 
 ![pipeline screenshot](./pipeline.png)
 
 I finally saved the model via joblib to be used for predictions via the webapp. 
 
 ## Methods
+
+Tools:
 - numpy, pandas, scikit for data analysis and inference
-- Streamlit for web app design
+- Streamlit (st) for web app design
 - GitHub and Heroku for web app deployment and hosting
 - VS Code as IDE
 
+Inference methods:
+Scikit's: 
+- linear regression model
+- Pipeline
+- GridSearchCV for hyperparameter tuning
+- Features: OneHotEncoder/ColumnTransformer, StandardScaler, PolynomialFeatures and SimpleImputer for missing values
 ## Results
 The app is live at https://ds-example.herokuapp.com/
 It allows for online and batch processing as designed by the pycaret post:
 - Online: User inputs each feature manually for predicting a single insurance cost
 ![online screenshot](./online.png)
-- Batch: It allows the user to uplaod a csv file with the 6 features for predicting many instances at once.
+- Batch: It allows the user to upload a csv file with the 6 features for predicting many instances at once.
 ![batch screenshot](./batch.png)
+
+I am not adding any visualizations here, though st supports it. 
 
 ## Discussion
 Experimenting with various feature engineering techniques and regression algorithms, I found that linear regression with one-hot encoding provided one of the highest accuracies, despite its simpler nature. Across all these trials, my training accuracy was around 75% to 77%. Thus, I decided the deploy the pipelined linear regression model. The deployed model has a test accuracy of 73%. 
 
-I looked at some kaggle notebooks studying this problem and found this to be an acceptible level of success for this dataset. I am interested in 
-
-
+I looked at some kaggle notebooks studying this problem and found this to be an acceptable level of success for this dataset. I am interested in analyzing the training data  further to understand why a higher accuracy can't be easily achieved. 
 
 ## Summary
+This sample project deploys a supervised regression model to predict insurance costs based on 6 features. The web app is quickly deployed using streamlit, and can do online and batch processing. However, the deployed models testing accuracy hovers around 73% despite trying multiple feature engineering techniques.
 
 #### on Heroku PaaS using SciKit and Streamlit
 

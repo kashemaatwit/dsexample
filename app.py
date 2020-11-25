@@ -32,7 +32,7 @@ def run():
     #image = Image.open('logo.png')
     image_hospital = Image.open('hospital.jpg')
 
-    st.image(image,use_column_width=False)
+    # st.image(image,use_column_width=False)
 
     add_selectbox = st.sidebar.selectbox(
     "How would you like to predict?",
