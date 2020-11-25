@@ -29,7 +29,7 @@ def predict(model, input_df):
 def run():
 
     from PIL import Image
-    image = Image.open('logo.png')
+    #image = Image.open('logo.png')
     image_hospital = Image.open('hospital.jpg')
 
     st.image(image,use_column_width=False)
@@ -39,7 +39,7 @@ def run():
     ("Online", "Batch"))
 
     st.sidebar.info('This app is created to predict patient hospital charges')
-    # st.sidebar.success('https://www.pycaret.org')
+    st.sidebar.success('https://github.com/memoatwit/dsexample/')
     
     st.sidebar.image(image_hospital)
 
@@ -75,7 +75,7 @@ def run():
 
     if add_selectbox == 'Batch':
         try:
-            file_buffer = st.file_uploader("Upload csv file for predictions", type=["csv"])
+            file_buffer = st.file_uploader("Upload CSV file with 6 features: age,sex,bmi,children,smoker,region", type=["csv"])
             bytes_data = file_buffer.read()
             s=str(bytes_data)
             file_upload = io.StringIO(s)
@@ -93,7 +93,12 @@ def run():
 #             st.write("else")
 #             continue
         except:
-            st.write("Please upload a CSV file.")
+            st.write("Please upload a valid CSV file.")
+    st.write("The pycaret post that inspired this project:")
+    st.write("https://towardsdatascience.com/build-and-deploy-machine-learning-web-app-using-pycaret-and-streamlit-28883a569104")
+    st.markdown(
+    """<a href="https://towardsdatascience.com/build-and-deploy-machine-learning-web-app-using-pycaret-and-streamlit-28883a569104">The pycaret post that inspired this project</a>""", unsafe_allow_html=True,
+)
 
             
 if __name__ == '__main__':

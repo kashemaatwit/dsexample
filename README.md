@@ -48,7 +48,9 @@ It allows for online and batch processing as designed by the pycaret post:
 ![batch screenshot](./batch.png)
 
 ## Discussion
-Experiemting with various feature engineering techniques and regression algorithms, I found that linear regression with one-hot encoding provided one of the highest accuracies, despite its simpler nature. 
+Experimenting with various feature engineering techniques and regression algorithms, I found that linear regression with one-hot encoding provided one of the highest accuracies, despite its simpler nature. Across all these trials, my training accuracy was around 75% to 77%. Thus, I decided the deploy the pipelined linear regression model. The deployed model has a test accuracy of 73%. 
+
+I looked at some kaggle notebooks studying this problem and found this to be an acceptible level of success for this dataset. I am interested in 
 
 
 
@@ -59,7 +61,9 @@ Experiemting with various feature engineering techniques and regression algorith
 Inspired by the [the pycaret post](https://towardsdatascience.com/build-and-deploy-machine-learning-web-app-using-pycaret-and-streamlit-28883a569104)
 
 Live at https://ds-example.herokuapp.com/
-link! 
+Note that Streamlit now offers free hosting as well. The same repo is also deployed at https://share.streamlit.io/memoatwit/dsexample/app.py
+More info [here](https://docs.streamlit.io/en/stable/deploy_streamlit_app.html).
+
 
 ## References
 [1] [GitHub Integration (Heroku GitHub Deploys)](https://devcenter.heroku.com/articles/github-integration)
