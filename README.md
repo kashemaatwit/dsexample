@@ -50,7 +50,7 @@ Inference methods used with Scikit:
 The app is live at https://ds-example.herokuapp.com/
 It allows for online and batch processing as designed by the pycaret post:
 - Online: User inputs each feature manually for predicting a single insurance cost
-![online screenshot](./online.png)
+![online screenshot](./online.png | width=80)
 - Batch: It allows the user to upload a CSV file with the 6 features for predicting many instances at once. 
   - An [X_test.csv](./X_test.csv) is provided as a batch processing sample. Corresponding insurance prices are available at [y_test.csv](./y_test.csv)
 ![batch screenshot](./batch.png)
