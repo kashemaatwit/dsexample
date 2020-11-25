@@ -39,7 +39,7 @@ def run():
     ("Online", "Batch"))
 
     st.sidebar.info('This app is created to predict patient hospital charges')
-    st.sidebar.success('https://www.pycaret.org')
+    # st.sidebar.success('https://www.pycaret.org')
     
     st.sidebar.image(image_hospital)
 
